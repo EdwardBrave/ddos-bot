@@ -114,6 +114,7 @@ def get_parameters():
         table = [[text]]
         output = tabulate(table, tablefmt='grid')
         print(output)
+    print(f">>> current target: {get_Host}:{port}")
     print(Style.RESET_ALL)
 
 # reading headers
