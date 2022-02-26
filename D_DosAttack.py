@@ -5,6 +5,9 @@ from art import*
 import animation
 from tabulate import tabulate
 from colorama import Fore, Style
+
+import config
+
 status = True
 
 def user_agent():
@@ -87,33 +90,19 @@ def get_parameters():
     print(Fore.RED,Style.BRIGHT+"WARNING: Your public ip "+str(PUB_ip)+" is visible")
 #pirate
 #happy
-    while True:
-        print(Fore.CYAN,Style.BRIGHT+"Enter the Domain name or Public IP\n(example google.com or 142.250.183.78):- ",end="")
-        print(Style.RESET_ALL,end="")
-        get_Host =str(input())
-        if get_Host == "":
-            print(Fore.RED,Style.BRIGHT+"No input provided")
-        elif get_Host != "":
-            try:
-                host = (socket.gethostbyname(get_Host))
-                break
-            except Exception as e:
-                print(Fore.RED,Style.BRIGHT,"Please Enter valid Domain name")
-    port = 80 #Change Here To Change Port Number
-    while True:
-        print(Fore.CYAN,Style.BRIGHT,"Enter the Thread Number (Default is 135):- ",end="")
-        print(Style.RESET_ALL,end="")
-        get_Threat =input()
-        if get_Threat == "":
-            thr = 135
-            break
-        else:
-            try:
-                get_Threat = int(get_Threat)
-                thr = get_Threat
-                break
-            except:
-                print(Fore.RED,Style.BRIGHT,"Please Enter Numeric Value")
+    print(Style.RESET_ALL,end="")
+    get_Host = config.HOST
+    if get_Host == "":
+        print(Fore.RED,Style.BRIGHT+"No input provided")
+        return
+    elif get_Host != "":
+        try:
+            host = (socket.gethostbyname(get_Host))
+        except Exception as e:
+            print(Fore.RED,Style.BRIGHT,"Please Enter valid Domain name")
+            return
+    port = config.PORT #Change Here To Change Port Number
+    thr = config.THREAD
     print(Fore.BLUE,Style.BRIGHT)
     if get_Host == host:
         text ="Public IP    :- "+str(get_Host)+"\nPort Number  :- "+str(port)+"\nThreadding   :- "+str(thr)
