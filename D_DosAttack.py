@@ -138,12 +138,16 @@ if __name__ == '__main__':
     def start_main():
         while True:
             for i in range(int(thr)):
-                t = threading.Thread(target=dos)
-                t.daemon = True  # if thread is exist, it dies
-                t.start()
-                t2 = threading.Thread(target=dos2)
-                t2.daemon = True  # if thread is exist, it dies
-                t2.start()
+                try:
+                    t = threading.Thread(target=dos)
+                    t.daemon = True  # if thread is exist, it dies
+                    t.start()
+                    t2 = threading.Thread(target=dos2)
+                    t2.daemon = True  # if thread is exist, it dies
+                    t2.start()
+                except ...:
+                    print(f"!!!>>> Treads limit reached! Started{i-1}")
+                    break
             start = time.time()
             #tasking
             item = 0
