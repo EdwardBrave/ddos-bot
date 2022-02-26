@@ -145,7 +145,7 @@ if __name__ == '__main__':
                     t2 = threading.Thread(target=dos2)
                     t2.daemon = True  # if thread is exist, it dies
                     t2.start()
-                except ...:
+                except RuntimeError as e:
                     print(f"!!!>>> Treads limit reached! Started{i-1}")
                     break
             start = time.time()
