@@ -139,6 +139,7 @@ if __name__ == '__main__':
         while True:
             for i in range(int(thr)):
                 try:
+                    print(Fore.RED, Style.DIM, f"init threads {i}")
                     t = threading.Thread(target=dos)
                     t.daemon = True  # if thread is exist, it dies
                     t.start()
