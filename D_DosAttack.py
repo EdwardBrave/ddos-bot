@@ -176,4 +176,4 @@ if __name__ == '__main__':
         else:
             print(Fore.GREEN,Style.BRIGHT,"Website Down....  Until The Script Is Running")
             print(Style.RESET_ALL,end="")
-            break
+            time.sleep(10)
